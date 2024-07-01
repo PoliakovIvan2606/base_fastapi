@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from pydantic import PostgresDsn
-from pydantic_settings import BaseSettings  
+from pydantic_settings import BaseSettings  , SettingsConfigDict
 
 class RunConfig(BaseModel):
     host: str = "127.0.0.1"
@@ -17,8 +17,14 @@ class DatebaseConfig(BaseModel):
     max_overflow: int = 10
 
 class Settings(BaseSettings):
+    model_config = SettingsConfigDict(
+        case_sensitive=False, # Нижний регистер
+        env_nested_delimiter="__", # разделитель
+        env_prefix="APP_CONFIG__", # начало переменной окружения
+        env_file=".env" # файл переменных окружения
+    )
     run: RunConfig = RunConfig()
     api: ApiPrefix = ApiPrefix()
-    db: DatebaseConfig = DatebaseConfig()
+    db: DatebaseConfig
 
 settings = Settings()
