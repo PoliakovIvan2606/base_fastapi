@@ -9,12 +9,12 @@ class RunConfig(BaseModel):
 class ApiPrefix(BaseModel):
     prefix: str = "/api"
 
-class DatebaseConfig(BaseModel):
-    url: PostgresDsn
+# class DatebaseConfig(BaseModel):
+#     url: PostgresDsn
 
 class Settings(BaseSettings):
     run: RunConfig = RunConfig()
     api: ApiPrefix = ApiPrefix()
-    db: DatebaseConfig = DatebaseConfig()
+    # db: DatebaseConfig = DatebaseConfig()
 
-settings = Settings()\
+settings = Settings()
