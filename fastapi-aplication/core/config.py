@@ -21,7 +21,7 @@ class Settings(BaseSettings):
         case_sensitive=False, # Нижний регистер
         env_nested_delimiter="__", # разделитель
         env_prefix="APP_CONFIG__", # начало переменной окружения
-        env_file=".env" # файл переменных окружения
+        env_file=".env" # файл переменных
     )
     run: RunConfig = RunConfig()
     api: ApiPrefix = ApiPrefix()
