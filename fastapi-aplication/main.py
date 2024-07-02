@@ -6,12 +6,14 @@ from fastapi import FastAPI
 from api import router as api_router
 from core.config import settings
 
-from core.models import db_helper
+from core.models import db_helper, User
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    # async with db_helper.engine.begin() as conn:
+    #     await conn.run_sync(User.metadata.drop_all)
+    
     yield
-    print("dispose db")
     await db_helper.dispose() # Закрытие сессии посли завершения прогргаммы
 
 main_app = FastAPI(
