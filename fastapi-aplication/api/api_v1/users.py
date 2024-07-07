@@ -10,3 +10,7 @@ router = APIRouter(
 @router.get("/")
 async def index():
     return {"status": "200 OK"}
+
+@router.post("/")
+async def index():
+    return {}
